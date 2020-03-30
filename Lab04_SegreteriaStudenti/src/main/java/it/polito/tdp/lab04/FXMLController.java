@@ -48,6 +48,9 @@ public class FXMLController {
 
     @FXML
     private TextArea txtRisultato;
+    
+    @FXML
+    private Button btnReset;
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
@@ -64,6 +67,11 @@ public class FXMLController {
 
     }
 
+    @FXML
+    void doReset(ActionEvent event) {
+
+    }
+    
     @FXML
     void doIscrizione(ActionEvent event) {
 
@@ -82,7 +90,8 @@ public class FXMLController {
         assert btnCercaCorsi != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnIscrivi != null : "fx:id=\"btnIscrivi\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtRisultato != null : "fx:id=\"txtRisultato\" was not injected: check your FXML file 'Scene.fxml'.";
-        
+        assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
+
     }
     public void setModel(Model model) {
     	this.model=model;

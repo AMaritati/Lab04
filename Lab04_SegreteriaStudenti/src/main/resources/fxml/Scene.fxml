@@ -60,7 +60,7 @@
    <bottom>
       <AnchorPane prefHeight="18.0" prefWidth="442.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="462.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="61.0" text="RESET" />
+            <Button fx:id="btnReset" alignment="CENTER" contentDisplay="CENTER" layoutX="462.0" layoutY="1.0" mnemonicParsing="false" onAction="#doReset" prefHeight="26.0" prefWidth="61.0" text="RESET" />
          </children>
       </AnchorPane>
    </bottom>

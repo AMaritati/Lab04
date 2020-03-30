@@ -6,6 +6,7 @@ public class TestModel {
 
 		Model model = new Model();
 		
+		//System.out.println();
 		/*
 		 * 	Write here your test model
 		 */
