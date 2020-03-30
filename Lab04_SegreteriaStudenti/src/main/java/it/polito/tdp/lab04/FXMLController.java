@@ -1,13 +1,14 @@
 package it.polito.tdp.lab04;
 
 import java.net.URL;
-import java.util.ResourceBundle;
 
+import java.util.ResourceBundle;
+import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -23,7 +24,7 @@ public class FXMLController {
     private URL location;
 
     @FXML
-    private ChoiceBox<?> boxCorso;
+    private ComboBox<Corso> boxCorso;
 
     @FXML
     private Button btnCercaIscrittiCorso;
@@ -69,12 +70,23 @@ public class FXMLController {
 
     @FXML
     void doReset(ActionEvent event) {
+    	txtMatricola.clear();
+    	txtNome.clear();
+    	txtCognome.clear();
+    	txtRisultato.clear();
 
     }
     
     @FXML
     void doIscrizione(ActionEvent event) {
 
+    }
+    
+    void insertCorsi() {
+    	boxCorso.getItems().addAll(this.model.getTuttiICorsi());
+    	boxCorso.getItems().add(null);
+    	boxCorso.setValue(null);
+    	
     }
 
     @FXML
@@ -92,6 +104,8 @@ public class FXMLController {
         assert txtRisultato != null : "fx:id=\"txtRisultato\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
 
+        model = new Model();
+        insertCorsi();
     }
     public void setModel(Model model) {
     	this.model=model;

@@ -50,7 +50,9 @@ public class Corso {
 	
 	@Override
 	public String toString() {
-		return "Corso [codins=" + codins + ", crediti=" + crediti + ", nome=" + nome + ", pd=" + pd + "]";
+		return codins + ", " + crediti + ", " + nome + ", " + pd ;
+		
+		//"Corso [codins=" + codins + ", crediti=" + crediti + ", nome=" + nome + ", pd=" + pd + "]";
 	}
 
 	@Override
