@@ -18,4 +18,8 @@ public class Model {
 	public List<Corso> getTuttiICorsi() {
 		return daoC.getTuttiICorsi();
 	}
+	
+	public List<Studente> getTuttiGliStudenti(){
+		return daoS.getTuttiGliStudenti();
+	}
 }

@@ -1,10 +1,11 @@
 package it.polito.tdp.lab04;
 
 import java.net.URL;
-
+import java.util.List;
 import java.util.ResourceBundle;
 import it.polito.tdp.lab04.model.Corso;
 import it.polito.tdp.lab04.model.Model;
+import it.polito.tdp.lab04.model.Studente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -65,6 +66,26 @@ public class FXMLController {
 
     @FXML
     void doCompleta(ActionEvent event) {
+    	// INIZIALIZZO UN BOOLEAN PER LA RICERCA
+    	 boolean flag = false;
+    	 // TRASFORMO IN INTERO IL CAMPO DI TESTO
+    	int matricola = Integer.parseInt(txtMatricola.getText());
+    	
+    	//LAVORO CON LA LISTA STUDENTI IMPORTATA DAL DB
+    	List<Studente> s = this.model.getTuttiGliStudenti();
+    	for (Studente a : s) {
+    		if (a.getMatricola()==matricola) {
+    			flag = true;
+    			txtNome.setText(a.getNome());
+    			txtCognome.setText(a.getCognome());
+    		}
+    		
+    	}
+    	//SE NON TROVATA DESCRIVE L'ERRORE
+    	if (!flag) {
+    		txtNome.setText("ERRORE");
+    		txtCognome.setText("INSERIMENTO");
+    	}
 
     }
 
