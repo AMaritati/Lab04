@@ -35,4 +35,8 @@ public class Model {
 	public List<Studente> getStudentiIscrittiAlCorso(Corso corso){
 		return daoC.getStudentiIscrittiAlCorso(corso);
 	}
+	
+	public List<Corso> getCorsoByStudente(Integer matricola) {
+		return daoC.getCorsoByStudente(matricola);
+	}
 }

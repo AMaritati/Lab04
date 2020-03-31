@@ -56,7 +56,13 @@ public class FXMLController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
-
+    
+    	Integer matricola = Integer.parseInt(txtMatricola.getText());
+    	List<Corso> c = this.model.getCorsoByStudente(matricola);
+    	for(Corso a : c) {
+    		txtRisultato.appendText(a.getCodins()+" "+a.getNome()+"\n");
+    	}
+    	
     }
 
     @FXML

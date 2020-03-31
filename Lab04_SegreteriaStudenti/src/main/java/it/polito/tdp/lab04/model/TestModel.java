@@ -8,12 +8,15 @@ public class TestModel {
 		Corso c = new Corso("01KSUPG",0,null,0);
 		
 		
+		
 		/*
 		 * 	Write here your test model
 		 */
 		
 		
-		System.out.println(model.getCorso(c));
+	
+		System.out.println(model.getCorsoByStudente(161245));
+		
 		
 		//System.out.println(model.getStudentiIscrittiAlCorso(c));
 

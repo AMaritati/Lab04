@@ -131,6 +131,45 @@ public class CorsoDAO {
 		
 	}
 	
+	public List<Corso> getCorsoByStudente(Integer matricola) {
+
+		
+		final String sql = "SELECT c.* FROM corso AS c,iscrizione AS i,studente AS s WHERE c.codins=i.codins AND s.matricola=i.matricola AND i.matricola = ?";
+
+		List<Corso> corsi = new LinkedList<Corso>();
+		
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+
+			st.setInt(1, matricola);
+			ResultSet rs = st.executeQuery();
+			
+
+			while (rs.next()) {
+
+				String codins = rs.getString("codins");
+				int numeroCrediti = rs.getInt("crediti");
+				String nome = rs.getString("nome");
+				int periodoDidattico = rs.getInt("pd");
+
+				//serve solo per il test questa stampa
+				//System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
+				// Aggiungi il nuovo oggetto Corso alla lista corsi
+				corsi.add(new Corso(codins,numeroCrediti,nome,periodoDidattico));
+			}
+
+			conn.close();
+			
+			return corsi;
+			
+
+		} catch (SQLException e) {
+			// e.printStackTrace();
+			throw new RuntimeException("Errore Db", e);
+		}
+	}
 
 	/*
 	 * Data una matricola ed il codice insegnamento, iscrivi lo studente al corso.
