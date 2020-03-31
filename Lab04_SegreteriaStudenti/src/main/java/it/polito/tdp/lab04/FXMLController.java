@@ -60,6 +60,10 @@ public class FXMLController {
     	txtRisultato.clear();
     
     	//get la matricola
+    	if (this.checkMatricola(txtMatricola.getText())==false) {
+    		txtRisultato.setText("ERRORE INSERIMENTO MATRICOLA");
+    		return;
+    	}
     	Integer matricola = Integer.parseInt(txtMatricola.getText());
     	
     	//controllo se la matricola esiste
@@ -99,9 +103,14 @@ public class FXMLController {
 
     @FXML
     void doCompleta(ActionEvent event) {
+    	txtRisultato.clear();
     	// INIZIALIZZO UN BOOLEAN PER LA RICERCA
     	 boolean flag = false;
-    	 // TRASFORMO IN INTERO IL CAMPO DI TESTO
+    	 // SE LA MATRICOLA E' NUMERICA, TRASFORMO IN INTERO IL CAMPO DI TESTO
+    	 if (this.checkMatricola(txtMatricola.getText())==false) {
+     		txtRisultato.setText("ERRORE INSERIMENTO MATRICOLA");
+     		return;
+     	}
     	int matricola = Integer.parseInt(txtMatricola.getText());
     	
     	//LAVORO CON LA LISTA STUDENTI IMPORTATA DAL DB
@@ -134,8 +143,15 @@ public class FXMLController {
     
     @FXML
     void doIscrizione(ActionEvent event) {
+    	txtRisultato.clear();
     	//inizialmente come .5 vedo se la matricola inserita faccia parte del corso scelto
     	int i=0;
+    	
+    	//CONTROLLO SE LA MATRICOLA E' BEN POSTA
+    	if (this.checkMatricola(txtMatricola.getText())==false) {
+    		txtRisultato.setText("ERRORE INSERIMENTO MATRICOLA");
+    		return;
+    	}
     	
     	//recupero corso e matricola indicati
     	Corso c = boxCorso.getValue();
@@ -164,6 +180,22 @@ public class FXMLController {
     	boxCorso.setValue(null);
     	
     }
+    
+    public boolean checkMatricola(String matricola) {
+		char c;
+		boolean result = true;
+		
+		for(int i=0;i<matricola.length();i++){
+            c = matricola.charAt(i);
+            if(((Character.isLetter(c)))){
+                result = false;
+                return result;
+            }
+        }
+        
+		return result;
+	}
+	
 
     @FXML
     void initialize() {
@@ -182,6 +214,7 @@ public class FXMLController {
 
         model = new Model();
         insertCorsi();
+        
     }
     public void setModel(Model model) {
     	this.model=model;
