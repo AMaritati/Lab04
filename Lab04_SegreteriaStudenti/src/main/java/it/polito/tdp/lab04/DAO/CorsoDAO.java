@@ -131,11 +131,12 @@ public class CorsoDAO {
 		
 	}
 	
-	public List<Corso> getCorsoByStudente(Integer matricola) {
+	public List<Corso> getCorsoByStudente(Studente s) {
 
 		
-		final String sql = "SELECT c.* FROM corso AS c,iscrizione AS i,studente AS s WHERE c.codins=i.codins AND s.matricola=i.matricola AND i.matricola = ?";
+		final String sql = "SELECT c.* FROM corso AS c,iscrizione AS i WHERE c.codins=i.codins AND i.matricola = ?";
 
+		Integer matricola = s.getMatricola();
 		List<Corso> corsi = new LinkedList<Corso>();
 		
 

@@ -28,7 +28,7 @@ public class Model {
 	public List<Corso> getCorso(Corso corso) {
 		return daoC.getCorso(corso);
 	}
-	public List<Studente> getStudente(Integer cod){
+	public Studente getStudente(Integer cod){
 		return daoS.getStudente(cod);
 	}
 	
@@ -36,7 +36,7 @@ public class Model {
 		return daoC.getStudentiIscrittiAlCorso(corso);
 	}
 	
-	public List<Corso> getCorsoByStudente(Integer matricola) {
-		return daoC.getCorsoByStudente(matricola);
+	public List<Corso> getCorsoByStudente(Studente s) {
+		return daoC.getCorsoByStudente(s);
 	}
 }

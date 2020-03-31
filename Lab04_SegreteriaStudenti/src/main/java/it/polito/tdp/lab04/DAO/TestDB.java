@@ -11,7 +11,7 @@ public class TestDB {
 		CorsoDAO cdao = new CorsoDAO();
 		StudenteDAO sdao = new StudenteDAO();
 		//sdao.getTuttiGliStudenti();
-		
+		sdao.getTuttiGliStudenti();
 		
 		
 		

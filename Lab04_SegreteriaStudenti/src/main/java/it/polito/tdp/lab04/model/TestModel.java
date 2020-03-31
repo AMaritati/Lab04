@@ -6,6 +6,7 @@ public class TestModel {
 
 		Model model = new Model();
 		Corso c = new Corso("01KSUPG",0,null,0);
+		Studente s = new Studente (146101,null,null,null);
 		
 		
 		
@@ -15,7 +16,7 @@ public class TestModel {
 		
 		
 	
-		System.out.println(model.getCorsoByStudente(161245));
+		System.out.println(model.getCorsoByStudente(s));
 		
 		
 		//System.out.println(model.getStudentiIscrittiAlCorso(c));

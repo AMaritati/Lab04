@@ -56,11 +56,25 @@ public class FXMLController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
+    	
+    	txtRisultato.clear();
     
+    	//get la matricola
     	Integer matricola = Integer.parseInt(txtMatricola.getText());
-    	List<Corso> c = this.model.getCorsoByStudente(matricola);
+    	
+    	//controllo se la matricola esiste
+    	Studente s0 = this.model.getStudente(matricola);
+    	if (s0==null) {
+    		txtRisultato.setText("MATRICOLA NON ESISTENTE IN DB");
+    		return;
+    	}
+  
+    	//trovo lo studente dal db
+    	Studente s = this.model.getStudente(matricola);
+    	//genero i corsi che segue lo studente
+    	List<Corso> c = this.model.getCorsoByStudente(s);
     	for(Corso a : c) {
-    		txtRisultato.appendText(a.getCodins()+" "+a.getNome()+"\n");
+    		txtRisultato.appendText(a.getCodins()+" "+a.getCrediti()+" "+a.getNome()+" "+a.getPd()+"\n");
     	}
     	
     }
@@ -110,6 +124,7 @@ public class FXMLController {
 
     @FXML
     void doReset(ActionEvent event) {
+    	//cancello tutti i campi
     	txtMatricola.clear();
     	txtNome.clear();
     	txtCognome.clear();
@@ -119,6 +134,27 @@ public class FXMLController {
     
     @FXML
     void doIscrizione(ActionEvent event) {
+    	//inizialmente come .5 vedo se la matricola inserita faccia parte del corso scelto
+    	int i=0;
+    	
+    	//recupero corso e matricola indicati
+    	Corso c = boxCorso.getValue();
+    	Integer matricola = Integer.parseInt(txtMatricola.getText());
+    	
+    	//recupero la lista di studenti di quel corso
+    	List<Studente> s = this.model.getStudentiIscrittiAlCorso(c);
+    	for(Studente a : s) {
+    		if (a.getMatricola().equals(matricola)) {
+    			i++;
+    		}
+    	}
+    	if (i!=0) {
+    		txtRisultato.setText("Lo studente selezionato è iscritto al corso");
+    	}
+    	else {
+    		txtRisultato.setText("Lo studente selezionato non è iscritto al corso");
+    	}
+    	
 
     }
     

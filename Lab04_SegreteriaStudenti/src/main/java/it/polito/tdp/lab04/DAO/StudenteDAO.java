@@ -48,18 +48,19 @@ public class StudenteDAO {
 	}
 
 	
-	public List<Studente> getStudente(Integer cod) {
+	public Studente getStudente(Integer cod) {
 
 		final String sql = "SELECT * FROM studente WHERE matricola = ?";
 
-		List<Studente> s = new LinkedList<Studente>();
+		Studente s = null;
 
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
 
-			ResultSet rs = st.executeQuery();
 			st.setInt(1, cod);
+			ResultSet rs = st.executeQuery();
+			
 
 			while (rs.next()) {
 
@@ -68,9 +69,9 @@ public class StudenteDAO {
 				String nome = rs.getString("nome");
 				String cds = rs.getString("CDS");
 
-				System.out.println(matricola + " " + cognome + " " + nome + " " + cds);
+				//System.out.println(matricola + " " + cognome + " " + nome + " " + cds);
 				// Aggiungi il nuovo oggetto Corso alla lista corsi
-				s.add(new Studente(matricola,cognome,nome,cds));
+				s= new Studente(matricola,cognome,nome,cds);
 			}
 
 			conn.close();
