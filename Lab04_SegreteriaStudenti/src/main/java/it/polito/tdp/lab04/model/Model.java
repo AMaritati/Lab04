@@ -9,9 +9,11 @@ public class Model {
 	private CorsoDAO daoC;
 	private StudenteDAO daoS;
 	
+	
 	public Model() {
 		daoC = new CorsoDAO();
 		daoS = new StudenteDAO();
+		
 	}
 
 	//qui inserirò i metodi sulla db
@@ -21,5 +23,16 @@ public class Model {
 	
 	public List<Studente> getTuttiGliStudenti(){
 		return daoS.getTuttiGliStudenti();
+	}
+	
+	public List<Corso> getCorso(Corso corso) {
+		return daoC.getCorso(corso);
+	}
+	public List<Studente> getStudente(Integer cod){
+		return daoS.getStudente(cod);
+	}
+	
+	public List<Studente> getStudentiIscrittiAlCorso(Corso corso){
+		return daoC.getStudentiIscrittiAlCorso(corso);
 	}
 }

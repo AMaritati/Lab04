@@ -61,7 +61,20 @@ public class FXMLController {
 
     @FXML
     void doCercaIscrittiCorso(ActionEvent event) {
-
+    	txtRisultato.clear();
+        //recupero il valore dalla comboBox
+    	Corso corso = boxCorso.getValue();
+    	
+    	if (corso==null) {
+    		txtRisultato.setText("ERRORE CORSO INDICATO");
+    		return;
+    	}
+    	//lavoro sulla lista studenti joinnata
+    	List<Studente> s = this.model.getStudentiIscrittiAlCorso(corso);
+    	for(Studente a : s) {
+    		txtRisultato.appendText(a.toString()+"\n");
+    	}
+    	
     }
 
     @FXML
