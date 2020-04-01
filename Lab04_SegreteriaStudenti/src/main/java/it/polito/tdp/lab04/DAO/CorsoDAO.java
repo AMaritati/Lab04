@@ -191,7 +191,7 @@ public class CorsoDAO {
 			
 
 			Integer rs = st.executeUpdate();
-			
+			conn.close();
 			if (rs == 1)
 			
 			return true;

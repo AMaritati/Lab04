@@ -78,7 +78,7 @@ public class FXMLController {
     	//genero i corsi che segue lo studente
     	List<Corso> c = this.model.getCorsoByStudente(s);
     	for(Corso a : c) {
-    		txtRisultato.appendText(a.getCodins()+" "+a.getCrediti()+" "+a.getNome()+" "+a.getPd()+"\n");
+    		txtRisultato.appendText(a.descriviCorso()+"\n");
     	}
     	
     }
@@ -143,7 +143,7 @@ public class FXMLController {
     
     @FXML
     void doIscrizione(ActionEvent event) {
-    	Studente temp = null;
+    	
     	txtRisultato.clear();
     	//inizialmente come .5 vedo se la matricola inserita faccia parte del corso scelto
     	int i=0;
@@ -163,14 +163,17 @@ public class FXMLController {
     	for(Studente a : s) {
     		if (a.getMatricola().equals(matricola)) {
     			i++;
-    			temp = new Studente(a.getMatricola(),a.getNome(),a.getCognome(),a.getCds());
+    			
     		}
     	}
     	if (i!=0) {
     		txtRisultato.setText("Lo studente selezionato è iscritto al corso");
+    		return;
     	}
     	else {
-    		txtRisultato.setText("Lo studente selezionato non è iscritto al corso");
+    		this.model.inscriviStudenteACorso(this.model.getStudente(matricola), c);
+    		txtRisultato.setText("Lo studente selezionato non era iscritto al corso,\nmatricola:"+matricola+" e' entrato regolarmente a far parte di "+c.getNome());
+    		
     	}
     	
 

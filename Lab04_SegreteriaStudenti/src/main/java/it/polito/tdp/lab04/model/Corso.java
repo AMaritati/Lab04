@@ -55,6 +55,9 @@ public class Corso {
 		
 		//"Corso [codins=" + codins + ", crediti=" + crediti + ", nome=" + nome + ", pd=" + pd + "]";
 	}
+	public String descriviCorso() {
+		return codins.toUpperCase()+" "+ crediti+" "+nome.toUpperCase()+" "+pd;
+	}
 
 	@Override
 	public int hashCode() {
