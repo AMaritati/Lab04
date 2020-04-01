@@ -50,13 +50,13 @@ public class Corso {
 	
 	@Override
 	public String toString() {
-		return nome;
-		//return codins + ", " + crediti + ", " + nome + ", " + pd ;
+		return nome.toUpperCase();
 		
-		//"Corso [codins=" + codins + ", crediti=" + crediti + ", nome=" + nome + ", pd=" + pd + "]";
 	}
 	public String descriviCorso() {
-		return codins.toUpperCase()+" "+ crediti+" "+nome.toUpperCase()+" "+pd;
+		String s = String.format("%-5s %-5s %-5s %-50s", codins,crediti,nome,pd);
+		return s;
+		
 	}
 
 	@Override

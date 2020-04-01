@@ -53,7 +53,10 @@
             <TextField fx:id="txtCognome" layoutX="391.0" layoutY="88.0" prefHeight="26.0" prefWidth="130.0" promptText="Cognome" />
             <Button fx:id="btnCercaCorsi" layoutX="14.0" layoutY="136.0" mnemonicParsing="false" onAction="#doCercaCorsi" prefHeight="26.0" prefWidth="102.0" text="Cerca Corsi" />
             <Button fx:id="btnIscrivi" layoutX="456.0" layoutY="136.0" mnemonicParsing="false" onAction="#doIscrizione" prefHeight="26.0" prefWidth="67.0" text="Iscrivi" />
-            <TextArea fx:id="txtRisultato" editable="false" layoutX="12.0" layoutY="168.0" prefHeight="200.0" prefWidth="514.0" />
+            <TextArea fx:id="txtRisultato" editable="false" layoutX="12.0" layoutY="168.0" prefHeight="200.0" prefWidth="514.0">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font></TextArea>
          </children>
       </AnchorPane>
    </center>
