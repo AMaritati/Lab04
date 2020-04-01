@@ -143,6 +143,7 @@ public class FXMLController {
     
     @FXML
     void doIscrizione(ActionEvent event) {
+    	Studente temp = null;
     	txtRisultato.clear();
     	//inizialmente come .5 vedo se la matricola inserita faccia parte del corso scelto
     	int i=0;
@@ -162,6 +163,7 @@ public class FXMLController {
     	for(Studente a : s) {
     		if (a.getMatricola().equals(matricola)) {
     			i++;
+    			temp = new Studente(a.getMatricola(),a.getNome(),a.getCognome(),a.getCds());
     		}
     	}
     	if (i!=0) {

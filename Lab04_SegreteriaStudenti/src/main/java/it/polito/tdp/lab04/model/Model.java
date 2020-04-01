@@ -39,4 +39,8 @@ public class Model {
 	public List<Corso> getCorsoByStudente(Studente s) {
 		return daoC.getCorsoByStudente(s);
 	}
+	
+	public boolean inscriviStudenteACorso(Studente studente, Corso corso) {
+		return daoC.inscriviStudenteACorso(studente, corso);
+	}
 }

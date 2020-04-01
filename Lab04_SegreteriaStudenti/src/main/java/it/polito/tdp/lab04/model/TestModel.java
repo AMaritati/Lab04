@@ -16,7 +16,7 @@ public class TestModel {
 		
 		
 	
-		System.out.println(model.getCorsoByStudente(s));
+		System.out.println(model.inscriviStudenteACorso(s, c));
 		
 		
 		//System.out.println(model.getStudentiIscrittiAlCorso(c));
